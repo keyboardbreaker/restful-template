@@ -1,20 +1,11 @@
 const express = require('express');
 const chalk = require('chalk');
+const debug = require('debug')('app');
 const app = express();
-const bookRouter = express.Router();
+const morgan = require('morgan');
 const port = process.env.PORT || 3000;
 
-bookRouter.route('/books')
-    .get((req, res) => {
-        const response = { hello: 'this is my API'};
-        res.json(response);
-    });
-app.use('/api', bookRouter);
-
-app.get('/', (req, res) => {
-    res.send('Welcome to my API');
-});
-
-app.listen(port, () => {
-    console.log(`running on port ${chalk.green(port)}`);
+app.use(morgan('tiny')); //tiny - less GET info 
+app.listen(port, () => { //debug doesnt come up on production
+    debug(`running on port ${chalk.green(port)}`); //using debug instead of console.log
 });
