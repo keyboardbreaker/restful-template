@@ -1,5 +1,5 @@
 const express = require('express');
-
+const chalk = require('chalk');
 const app = express();
 const bookRouter = express.Router();
 const port = process.env.PORT || 3000;
@@ -16,5 +16,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('running on port '+ port);
+    console.log(`running on port ${chalk.green(port)}`);
 });
