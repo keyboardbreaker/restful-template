@@ -15,7 +15,7 @@ app.set('views','./src/views');
 app.set('view engine', 'pug');
 app.get('/', (req, res) =>{
     // res.sendFile(path.join(__dirname, '/views/index.html'));
-    res.render('index');
+    res.render('index', { list: ['a', 'b']});
 });
 
 app.listen(port, () => { //debug doesnt come up on production
