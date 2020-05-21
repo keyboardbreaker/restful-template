@@ -15,7 +15,10 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist/')
 app.set('views','./src/views');
 app.set('view engine', 'ejs');
 
-const movieRouter = require('./src/routes/movieRoutes');
+const nav = [{link: '/movie', title: 'Movies' },
+            { link: '/directors', title: 'directors'}];
+
+const movieRouter = require('./src/routes/movieRoutes')(nav);
 app.use('/movies', movieRouter);
 
 app.get('/', (req, res) => {
